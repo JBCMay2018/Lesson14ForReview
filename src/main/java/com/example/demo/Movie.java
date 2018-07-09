@@ -13,9 +13,13 @@ public class Movie {
     private long year;
     private String description;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="director_id")
+    @ManyToOne//(fetch = FetchType.EAGER)
+    //@JoinColumn(name="director_id")
     private Director director;
+
+    public Movie() {
+        //this.director = new Director();
+    }
 
     public long getId() {
         return id;
@@ -55,5 +59,16 @@ public class Movie {
 
     public void setDirector(Director director) {
         this.director = director;
+    }
+
+    @Override
+    public String toString() {
+        return "Movie{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", year=" + year +
+                ", description='" + description + '\'' +
+                ", director=" + director +
+                '}';
     }
 }

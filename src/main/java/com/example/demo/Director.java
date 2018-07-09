@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -15,6 +16,14 @@ public class Director {
 
     @OneToMany(mappedBy="director", cascade=CascadeType.ALL, fetch=FetchType.EAGER)
     public Set<Movie> movies;
+
+    public Director() {
+        this.movies = new HashSet<>();
+    }
+
+    public void addMovie(Movie movie) {
+        movies.add(movie);
+    }
 
     public long getId() {
         return id;
@@ -46,5 +55,15 @@ public class Director {
 
     public void setMovies(Set<Movie> movies) {
         this.movies = movies;
+    }
+
+    @Override
+    public String toString() {
+        return "Director{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", genre='" + genre + '\'' +
+                ", movies=" + movies +
+                '}';
     }
 }
