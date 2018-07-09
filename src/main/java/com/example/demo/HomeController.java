@@ -91,8 +91,9 @@ public class HomeController {
                                           @PathVariable("movieId") long movieId,
                                           @ModelAttribute("aDirector") Director d, Model model) {
         d = directorRepository.findById(new Long(directorId)).get();
-        d.addMovie(movieRepository.findById(new Long(movieId)).get());
-        directorRepository.save(d);
+        Movie m = movieRepository.findById(new Long(movieId)).get();
+        m.setDirector(d);
+        movieRepository.save(m);
         model.addAttribute("movieList", movieRepository.findAll());
         model.addAttribute("directorList", directorRepository.findAll());
         return "redirect:/";

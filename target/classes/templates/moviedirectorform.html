@@ -7,7 +7,7 @@
 <body>
 
 <form th:action="@{/adddirectortomovie/{movieId}(movieId=${movie.id})}" th:object="${aDirector}" method="POST">
-    <input type="text" th:value="${movie.id}"/>
+    <input type="text" th:value="${movie.id}"/> <br/>
     <label th:inline="text">Adding director for [[${movie.title}]]</label> <br/>
     Director:
     <select name="directors">
